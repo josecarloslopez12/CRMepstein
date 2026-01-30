@@ -205,7 +205,7 @@ php artisan migrate:fresh --seed
 
 ## Licencia
 
-Este proyecto está bajo licencia privada.
+Este proyecto está bajo licencia de Ilerna 😜.
 
 ---
 
