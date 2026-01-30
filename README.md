@@ -1,59 +1,212 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# CRM epstein 🌃
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Un sistema de gestión de relaciones con clientes (CRM) con temática **Cyberpunk 2077**. Administra clientes, productos, empleados, proveedores y categorías de forma eficiente en el universo de Night City.
 
-## About Laravel
+## Descripción del Proyecto
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+**CRM epstein** es una aplicación web desarrollada en Laravel que permite gestionar todos los aspectos de tu negocio:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- **Gestión de Clientes**: Administra tu cartera de clientes y contactos
+- **Inventario de Productos**: Control completo de stock y precios
+- **Gestión de Proveedores**: Administra tus relaciones comerciales
+- **Recursos Humanos**: Gestiona tu equipo de empleados
+- **Categorización**: Organiza productos en categorías personalizadas
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+La interfaz cuenta con un diseño moderno con temática Cyberpunk, inspirado en Night City, con datos de ejemplo del universo de Cyberpunk 2077.
 
-## Learning Laravel
+## Requisitos
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+Antes de instalar el proyecto, asegúrate de tener:
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- **PHP 8.1+** (recomendado 8.2 o superior)
+- **Composer** (gestor de dependencias de PHP)
+- **MySQL/MariaDB** (base de datos)
+- **Node.js y npm** (para assets)
+- **XAMPP** o similar (servidor local)
 
-## Laravel Sponsors
+### Software Recomendado
+- Visual Studio Code o editor similar
+- Git para control de versiones
+- MySQL Workbench (opcional, para gestionar BD)
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## Instalación
 
-### Premium Partners
+### 1. Clonar o descargar el proyecto
+```bash
+cd c:\xampp\htdocs
+git clone <url-del-repositorio> CRMepstein
+cd CRMepstein
+```
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+### 2. Instalar dependencias de PHP
+```bash
+composer install
+```
 
-## Contributing
+### 3. Instalar dependencias de Node (opcional, si usas Vite)
+```bash
+npm install
+npm run dev
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### 4. Configurar archivo `.env`
+Copia el archivo `.env.example` a `.env`:
+```bash
+copy .env.example .env
+```
 
-## Code of Conduct
+Configura tu base de datos en `.env`:
+```
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=epsteinjc
+DB_USERNAME=root
+DB_PASSWORD=
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### 5. Generar clave de aplicación
+```bash
+php artisan key:generate
+```
 
-## Security Vulnerabilities
+### 6. Ejecutar migraciones y seeders
+```bash
+php artisan migrate:fresh --seed
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Esto creará todas las tablas y cargará datos de ejemplo automáticamente.
 
-## License
+### 7. Iniciar el servidor
+```bash
+php artisan serve
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Accede a: **http://localhost:8000**
+
+## Credenciales de Prueba
+
+Después de ejecutar las seeders, puedes acceder con:
+
+| Campo | Valor |
+|-------|-------|
+| **Email** | epstein@isla.test |
+| **Contraseña** | epstein |
+
+## Datos de Ejemplo
+
+El proyecto incluye datos de ejemplo con temática Cyberpunk 2077:
+
+### Clientes
+- V (Mercenary)
+- Johnny Silverhand
+- Judy Alvarez
+- Panam Palmer
+- River Ward
+- Y más...
+
+### Productos
+- Kiroshi Optics V3
+- Sandevistan Mk IV
+- Mantis Blade System
+- Gorila Arms MkV
+- Apparition Handgun
+- Y más equipo cibernético...
+
+### Proveedores
+- Kuroda-Synth Corp
+- Arasaka Technologies
+- Militech Black Market
+- Zetatech Industries
+- Kiroshi Optics
+
+### Empleados
+- Misty Oldenheim
+- Viktor Vector
+- Fingers
+- Jackie Welles
+- Y más...
+
+### Categorías
+- Implantes Cibernéticos
+- Armas Militares
+- Software Hacker
+- Modificaciones Corporales
+- Equipo de Combate
+- Herramientas de Infiltración
+
+## Estructura del Proyecto
+
+```
+CRMepstein/
+├── app/
+│   ├── Http/Controllers/     # Controladores de la aplicación
+│   └── Models/               # Modelos de datos
+├── database/
+│   ├── migrations/           # Migraciones de BD
+│   └── seeders/              # Datos de ejemplo
+├── resources/
+│   ├── views/                # Vistas Blade
+│   │   ├── auth/             # Vistas de autenticación
+│   │   ├── clientes/
+│   │   ├── productos/
+│   │   ├── proveedores/
+│   │   ├── empleados/
+│   │   └── categoria/
+│   └── css/
+├── routes/                   # Definición de rutas
+├── public/                   # Archivos públicos
+└── composer.json
+```
+
+## Funcionalidades Principales
+
+### Autenticación
+- Sistema de login seguro
+- Registro de nuevos usuarios
+- Sesiones protegidas
+
+### Gestión de Datos
+- CRUD completo para cada módulo
+- Validación de datos
+- Interfaz intuitiva
+
+### Interfaz
+- Diseño responsive
+- Tema Cyberpunk
+- Iconos Bootstrap
+- Bootstrap 5.3
+
+## Troubleshooting
+
+### Error de conexión a BD
+Verifica que:
+- MySQL esté corriendo
+- Las credenciales en `.env` sean correctas
+- La base de datos exista
+
+### Error de permisos
+```bash
+php artisan cache:clear
+php artisan config:clear
+```
+
+### Resetear la BD
+```bash
+php artisan migrate:fresh --seed
+```
+
+## Tecnologías Utilizadas
+
+- **Backend**: Laravel 11
+- **Frontend**: Blade, Bootstrap 5.3, Bootstrap Icons
+- **Base de Datos**: MySQL
+- **Build Tool**: Vite
+
+## Licencia
+
+Este proyecto está bajo licencia privada.
+
+---
+
+**¡Bienvenido a Night City! 🌃** Que disfrutes gestionando tu CRM con estilo Cyberpunk.
