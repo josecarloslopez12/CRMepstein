@@ -6,6 +6,16 @@ Un sistema de gestión de relaciones con clientes (CRM) con temática **Cyberpun
 
 **CRM epstein** es una aplicación web desarrollada en Laravel que permite gestionar todos los aspectos de tu negocio:
 
+### Segunda entrega
+En la segunda entrega del curso se incorporaron varias mejoras clave:
+
+- Uso de **DataTables** para tablas interactivas en todos los índices; ahora las tablas paginan y filtran en el cliente y muestran textos en español.
+- Eliminación de los enlaces de paginación de Laravel (`$model->links()`); los controles se muestran únicamente dentro de DataTables para evitar duplicidad.
+- Subida de imágenes y archivos PDF en clientes y productos.
+- Gestión de roles (**admin**, **usuario**) con permisos para borrar.
+- Control de botones en vistas según el rol activo.
+- Validaciones extendidas y limpieza de archivos al eliminar registros.
+
 - **Gestión de Clientes**: Administra tu cartera de clientes y contactos
 - **Inventario de Productos**: Control completo de stock y precios
 - **Gestión de Proveedores**: Administra tus relaciones comerciales
@@ -23,6 +33,8 @@ Antes de instalar el proyecto, asegúrate de tener:
 - **MySQL/MariaDB** (base de datos)
 - **Node.js y npm** (para assets)
 - **XAMPP** o similar (servidor local)
+
+*Nota: la aplicación ahora usa el idioma español (`es`). Ajusta `APP_LOCALE` en `.env` si deseas otro idioma.*
 
 ### Software Recomendado
 - Visual Studio Code o editor similar
@@ -84,6 +96,8 @@ php artisan serve
 
 Accede a: **http://localhost:8000**
 
+Una vez logueado verás tu nombre y rol en la esquina superior; hay un botón **Salir** al lado para cerrar sesión y volver a la pantalla de inicio.
+
 ## Credenciales de Prueba
 
 Después de ejecutar las seeders, puedes acceder con:
@@ -92,6 +106,13 @@ Después de ejecutar las seeders, puedes acceder con:
 |-------|-------|
 | **Email** | epstein@isla.test |
 | **Contraseña** | epstein |
+
+También existe un usuario normal para pruebas:
+
+| **Email** | diddy@fiesta.test |
+| **Contraseña** | diddy |
+
+> Si ya ejecutaste los seeders anteriormente tendrás que volver a correrlos (por ejemplo `php artisan db:seed --class=AdminUserSeeder` o `php artisan migrate:fresh --seed`) para que la cuenta de diddy sea creada. No hace falta nueva migración, sólo re‑sembrar la tabla `users`.
 
 ## Datos de Ejemplo
 

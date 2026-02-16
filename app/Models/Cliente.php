@@ -9,5 +9,16 @@ class Cliente extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['nombre', 'email', 'telefono', 'direccion'];
+    protected $fillable = ['nombre', 'email', 'telefono', 'direccion', 'foto', 'archivo'];
+
+    // helpers
+    public function getFotoUrlAttribute()
+    {
+        return $this->foto ? asset('storage/'.$this->foto) : null;
+    }
+
+    public function getArchivoUrlAttribute()
+    {
+        return $this->archivo ? asset('storage/'.$this->archivo) : null;
+    }
 }

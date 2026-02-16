@@ -14,7 +14,18 @@ class AdminUserSeeder extends Seeder
             ['email' => 'epstein@isla.test'],
             [
                 'name' => 'epstein',
-                'password' => Hash::make('epstein')
+                'password' => Hash::make('epstein'),
+                'role' => 'admin',
+            ]
+        );
+
+        // usuario normal para pruebas
+        User::updateOrCreate(
+            ['email' => 'diddy@fiesta.test'],
+            [
+                'name' => 'diddy',
+                'password' => Hash::make('diddy'),
+                'role' => 'usuario',
             ]
         );
     }

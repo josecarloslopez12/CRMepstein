@@ -15,6 +15,11 @@
             <p class="form-card-subtitle">Accede a tu CRM</p>
         </div>
         <div class="p-4">
+            <div class="alert alert-info">
+                <strong>Usuarios de prueba:</strong><br>
+                <small>Admin: <code>epstein@isla.test</code> / <code>epstein</code></small><br>
+                <small>Usuario: <code>diddy@fiesta.test</code> / <code>diddy</code></small>
+            </div>
             @if($errors->any())
                 <div class="alert alert-danger">
                     <ul class="mb-0">

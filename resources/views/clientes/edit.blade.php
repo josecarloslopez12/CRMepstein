@@ -12,7 +12,7 @@
         <h2 class="form-card-title"><i class="bi bi-pencil-square me-2"></i>Edición de Cliente</h2>
         <p class="form-card-subtitle">Modifica la información del cliente</p>
     </div>
-    <form action="{{ route('clientes.update', $cliente->id) }}" method="POST">
+    <form action="{{ route('clientes.update', $cliente->id) }}" method="POST" enctype="multipart/form-data">
         @csrf @method('PUT')
         <div class="form-group">
             <label for="nombre" class="form-label">Nombre Completo</label>
@@ -32,6 +32,26 @@
         <div class="form-group">
             <label for="direccion" class="form-label">Dirección</label>
             <input type="text" name="direccion" value="{{ $cliente->direccion }}" class="form-control" id="direccion">
+        </div>
+
+        <div class="form-group">
+            <label for="foto" class="form-label">Foto</label>
+            @if($cliente->foto_url)
+                <div class="mb-2">
+                    <img src="{{ $cliente->foto_url }}" width="120" alt="Foto cliente">
+                </div>
+            @endif
+            <input type="file" name="foto" id="foto" class="form-control" accept="image/*">
+        </div>
+
+        <div class="form-group">
+            <label for="archivo" class="form-label">Documento (PDF)</label>
+            @if($cliente->archivo_url)
+                <div class="mb-2">
+                    <a href="{{ $cliente->archivo_url }}" target="_blank">Ver documento</a>
+                </div>
+            @endif
+            <input type="file" name="archivo" id="archivo" class="form-control" accept="application/pdf">
         </div>
         
         <div class="form-group mb-0">

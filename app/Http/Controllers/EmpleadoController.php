@@ -9,7 +9,7 @@ class EmpleadoController extends Controller
 {
     public function index()
     {
-        $empleados = Empleado::all();
+        $empleados = Empleado::paginate(10);
         return view('empleados.index', compact('empleados'));
     }
 
@@ -43,7 +43,11 @@ class EmpleadoController extends Controller
 
     public function destroy($id)
     {
-        $empleado = Empleado::find($id);
+        if (auth()->user()->role !== 'admin') {
+            abort(403);
+        }
+
+        $empleado = Empleado::findOrFail($id);
         $empleado->delete();
         return redirect()->route('empleados.index');
     }

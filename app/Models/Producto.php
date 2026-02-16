@@ -7,5 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Producto extends Model {
     use HasFactory;
-    protected $fillable = ['nombre', 'precio', 'stock'];
+    protected $fillable = ['nombre', 'precio', 'stock', 'imagen', 'archivo'];
+
+    public function getImagenUrlAttribute()
+    {
+        return $this->imagen ? asset('storage/'.$this->imagen) : null;
+    }
+
+    public function getArchivoUrlAttribute()
+    {
+        return $this->archivo ? asset('storage/'.$this->archivo) : null;
+    }
 }

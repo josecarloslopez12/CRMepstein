@@ -8,6 +8,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
+    {{-- espacio para estilos adicionales (DataTables, etc.) --}}
+    @stack('styles')
 </head>
 <body>
     <div class="d-flex" id="wrapper">
@@ -54,7 +56,11 @@
         <div id="page-content-wrapper">
             <nav class="navbar navbar-light bg-white mb-4 shadow-sm rounded">
                 <div class="container-fluid">
-                    <span class="navbar-text ms-auto"><i class="bi bi-person-circle me-1"></i> {{ auth()->user()->name }}</span>
+                    <span class="navbar-text ms-auto me-3"><i class="bi bi-person-circle me-1"></i> {{ auth()->user()->name }} <small class="text-muted">({{ auth()->user()->role }})</small></span>
+                    <form action="{{ route('logout') }}" method="POST" class="d-inline">
+                        @csrf
+                        <button type="submit" class="btn btn-outline-dark btn-sm">Salir</button>
+                    </form>
                 </div>
             </nav>
             <div class="container-fluid px-4">
@@ -99,5 +105,7 @@
             }
         });
     </script>
+    {{-- scripts adicionales que pueda empujar cada vista --}}
+    @stack('scripts')
 </body>
 </html>

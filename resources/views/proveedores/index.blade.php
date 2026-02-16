@@ -16,7 +16,7 @@
         </a>
     </div>
     <div class="list-card-body">
-        <table class="table table-hover align-middle">
+        <table id="proveedores-table" class="table table-hover align-middle">
             <thead>
                 <tr>
                     <th><i class="bi bi-building me-2"></i>Empresa</th>
@@ -35,12 +35,14 @@
                         <a href="{{ route('proveedores.edit', $p->id) }}" class="btn-action btn-edit" title="Editar">
                             <i class="bi bi-pencil-square"></i>
                         </a>
+                        @if(auth()->user()->isAdmin())
                         <form action="{{ route('proveedores.destroy', $p->id) }}" method="POST" style="display:inline">
                             @csrf @method('DELETE')
                             <button type="submit" class="btn-action btn-delete" onclick="return confirm('¿Está seguro?')" title="Eliminar">
                                 <i class="bi bi-trash-fill"></i>
                             </button>
                         </form>
+                        @endif
                     </td>
                 </tr>
                 @empty
@@ -54,4 +56,31 @@
         </table>
     </div>
 </div>
+
+@push('styles')
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+@endpush
+
+@push('scripts')
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+<script>
+$(function(){
+    $('#proveedores-table').DataTable({
+        paging: true,
+        info: true,
+        searching: true,
+        language: {
+            paginate: { previous: '&laquo;', next: '&raquo;' },
+            info: 'Mostrando _START_ a _END_ de _TOTAL_ resultados',
+            infoEmpty: 'Mostrando 0 a 0 de 0 resultados',
+            lengthMenu: 'Mostrar _MENU_ entradas',
+            search: 'Buscar:'
+        },
+        columnDefs: [{ orderable: false, targets: 3 }]
+    });
+});
+</script>
+@endpush
+
 @endsection

@@ -9,7 +9,7 @@ class ProveedorController extends Controller
 {
     public function index()
     {
-        $proveedores = Proveedor::all();
+        $proveedores = Proveedor::paginate(10);
         return view('proveedores.index', compact('proveedores'));
     }
 
@@ -43,7 +43,11 @@ class ProveedorController extends Controller
 
     public function destroy($id)
     {
-        $proveedor = Proveedor::find($id);
+        if (auth()->user()->role !== 'admin') {
+            abort(403);
+        }
+
+        $proveedor = Proveedor::findOrFail($id);
         $proveedor->delete();
         return redirect()->route('proveedores.index');
     }

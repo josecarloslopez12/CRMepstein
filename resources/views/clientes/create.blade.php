@@ -12,7 +12,7 @@
         <h2 class="form-card-title"><i class="bi bi-person-plus-fill me-2"></i>Registro de Cliente</h2>
         <p class="form-card-subtitle">Completa los datos del nuevo cliente</p>
     </div>
-    <form action="{{ route('clientes.store') }}" method="POST">
+    <form action="{{ route('clientes.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="form-group">
             <label for="nombre" class="form-label">Nombre Completo</label>
@@ -32,6 +32,16 @@
         <div class="form-group">
             <label for="direccion" class="form-label">Dirección</label>
             <input type="text" name="direccion" id="direccion" class="form-control" placeholder="Ej: Calle Principal 123, Apartado 4B">
+        </div>
+        
+        <div class="form-group">
+            <label for="foto" class="form-label">Foto</label>
+            <input type="file" name="foto" id="foto" class="form-control" accept="image/*">
+        </div>
+
+        <div class="form-group">
+            <label for="archivo" class="form-label">Documento (PDF)</label>
+            <input type="file" name="archivo" id="archivo" class="form-control" accept="application/pdf">
         </div>
         
         <div class="form-group mb-0">

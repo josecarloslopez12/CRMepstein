@@ -12,7 +12,7 @@
         <h2 class="form-card-title"><i class="bi bi-pencil-square me-2"></i>Edición de Producto</h2>
         <p class="form-card-subtitle">Modifica los datos del producto</p>
     </div>
-    <form action="{{ route('productos.update', $producto->id) }}" method="POST">
+    <form action="{{ route('productos.update', $producto->id) }}" method="POST" enctype="multipart/form-data">
         @csrf @method('PUT')
         <div class="form-group">
             <label for="nombre" class="form-label">Nombre del Producto</label>
@@ -32,6 +32,26 @@
                     <input type="number" name="stock" value="{{ $producto->stock }}" id="stock" class="form-control" required>
                 </div>
             </div>
+        </div>
+
+        <div class="form-group">
+            <label for="imagen" class="form-label">Imagen</label>
+            @if($producto->imagen_url)
+                <div class="mb-2">
+                    <img src="{{ $producto->imagen_url }}" width="120" alt="Imagen producto">
+                </div>
+            @endif
+            <input type="file" name="imagen" id="imagen" class="form-control" accept="image/*">
+        </div>
+
+        <div class="form-group">
+            <label for="archivo" class="form-label">Documento (PDF)</label>
+            @if($producto->archivo_url)
+                <div class="mb-2">
+                    <a href="{{ $producto->archivo_url }}" target="_blank">Ver documento</a>
+                </div>
+            @endif
+            <input type="file" name="archivo" id="archivo" class="form-control" accept="application/pdf">
         </div>
         
         <div class="form-group mb-0">

@@ -59,6 +59,8 @@ class AuthController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            // por defecto todos los registrados son usuarios, el administrador se agrega via seeder
+            'role' => 'usuario',
         ]);
 
         Auth::login($user);

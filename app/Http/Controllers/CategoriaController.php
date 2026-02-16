@@ -9,7 +9,7 @@ class CategoriaController extends Controller
 {
     public function index()
     {
-        $categorias = Categoria::all();
+        $categorias = Categoria::paginate(10);
         return view('categoria.index', compact('categorias'));
     }
 
@@ -43,7 +43,11 @@ class CategoriaController extends Controller
 
     public function destroy($id)
     {
-        $categoria = Categoria::find($id);
+        if (auth()->user()->role !== 'admin') {
+            abort(403);
+        }
+
+        $categoria = Categoria::findOrFail($id);
         $categoria->delete();
         return redirect()->route('categorias.index');
     }
